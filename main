@@ -37,26 +37,26 @@ def refresh():
         if punkt == 1:
             color = "red"
         elif punkt == -1:
-            color = blue
+            color = "blue"
  
         canvas.draw_rectangle(x,y, 10, 10, fill=color)
  
  
 def start():
     for punkt in tablica:
-        if 0 < y < 90 && 0 < x < 90
+        if 0 < y < 90 and 0 < x < 90
             algorytm(tablica[x - 10, y], tablica[x + 10, y], tablica[x, y - 10], tablica[x, y + 10])
             
-        elif x == 0 && y == 0
+        elif x == 0 and y == 0
             algorytm(tablica[x, y + 10], tablica[x + 10, y], 0, 0)
 
-        elif x == 90 && y == 0
+        elif x == 90 and y == 0
             algorytm(tablica[x, y + 10], tablica[x - 10, y], 0, 0)
 
         elif x == 0 && y == 90
             algorytm(tablica[x, y - 10], tablica[x + 10, y], 0, 0)
 
-        elif x == 90 && y == 90
+        elif x == 90 and y == 90
             algorytm(tablica[x, y - 10], tablica[x - 10, y], 0, 0)
 
         elif y == 0
