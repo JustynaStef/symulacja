@@ -53,7 +53,7 @@ def start():
         elif x == 90 and y == 0
             algorytm(tablica[x, y + 10], tablica[x - 10, y], 0, 0)
 
-        elif x == 0 && y == 90
+        elif x == 0 and y == 90
             algorytm(tablica[x, y - 10], tablica[x + 10, y], 0, 0)
 
         elif x == 90 and y == 90
