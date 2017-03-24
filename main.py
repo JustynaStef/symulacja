@@ -37,7 +37,7 @@ def my_on_click(event):
     x = event.x/scale
     y = event.y/scale
  
-    tablica[x,y] = tablica[x,y] * (-1)
+    tablica[[x],[y]] = tablica[[x],[y]] * (-1)
     refresh()
  
  
@@ -98,7 +98,6 @@ def algorytm (one, two, three, four, x, y)
 
     refresh()
         
- 
  
 if __name__ == '__main__':
     main()
