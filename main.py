@@ -85,7 +85,7 @@ def start():
             algorytm(tablica[[x], [y + 10]], tablica[[x], [y - 10]], tablica[[x - 10], [y]], 0, x, y)
 
 
-def algorytm (one, two, three, four, x, y)
+def algorytm (one, two, three, four, x, y):
     h = one + two + three + four
     b = 0.5
     p = math.exp(b*h)
