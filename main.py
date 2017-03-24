@@ -93,7 +93,7 @@ def algorytm (one, two, three, four, x, y):
 
     if r > p:
         tablica[[x],[y]] = 1
-    else
+    else:
         tablica[[x],[y]] = -1
 
     refresh()
