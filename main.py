@@ -57,31 +57,31 @@ def start():
         x = xx * scale
         y = yy * scale
     
-        if 0 < y < (n-1)*scale and 0 < x < (n-1)*scale
+        if 0 < y < (n-1)*scale and 0 < x < (n-1)*scale:
             algorytm(tablica[[x - 10], [y]], tablica[[x + 10], [y]], tablica[[x], [y - 10]], tablica[[x], [y + 10]], x, y)
             
-        elif x == 0 and y == 0
+        elif x == 0 and y == 0:
             algorytm(tablica[[x], [y + 10]], tablica[[x + 10], [y]], 0, 0, x, y)
 
-        elif x == (n-1)*scale and y == 0
+        elif x == (n-1)*scale and y == 0:
             algorytm(tablica[[x], [y + 10]], tablica[[x - 10], [y]], 0, 0, x, y)
 
-        elif x == 0 and y == (n-1)*scale
+        elif x == 0 and y == (n-1)*scale:
             algorytm(tablica[[x], [y - 10]], tablica[[x + 10], [y]], 0, 0, x, y)
 
-        elif x == (n-1)*scale and y == (n-1)*scale
+        elif x == (n-1)*scale and y == (n-1)*scale:
             algorytm(tablica[[x], [y - 10]], tablica[[x - 10], [y]], 0, 0, x, y)
 
-        elif y == 0
+        elif y == 0:
             algorytm(tablica[[x], [y + 10]], tablica[[x + 10], [y]], tablica[[x - 10], [y]], 0, x, y)
 
-        elif y == (n-1)*scale
+        elif y == (n-1)*scale:
             algorytm(tablica[[x], [y - 10]], tablica[[x + 10], [y]], tablica[[x - 10], [y]], 0, x, y)
 
-        elif x == 0
+        elif x == 0:
             algorytm(tablica[[x], [y + 10]], tablica[[x + 10], [y]], tablica[[x], [y - 10]], 0, x, y)
 
-        elif x == (n-1)*scale
+        elif x == (n-1)*scale:
             algorytm(tablica[[x], [y + 10]], tablica[[x], [y - 10]], tablica[[x - 10], [y]], 0, x, y)
 
 
@@ -91,7 +91,7 @@ def algorytm (one, two, three, four, x, y)
     p = math.exp(b*h)
     r = random.uniform(0, 1)
 
-    if r > p
+    if r > p:
         tablica[[x],[y]] = 1
     else
         tablica[[x],[y]] = -1
