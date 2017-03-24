@@ -6,7 +6,9 @@ import math
 import random
 
 n = 10
-tablica = np.ones_like(n,n)
+tablica = np.arange(n*n)
+tablica = tablica.reshape((n,n))
+tablica = np.ones_like(tablica)
 scale = 10
 
 window = Tk()
