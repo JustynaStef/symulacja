@@ -20,9 +20,9 @@ def main():
     register_window()
  
 def init_tablica():
-        for i in xrange(0, 9):
-          for j in xrange(0, 9):
-            canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill="yellow")
+    for i in xrange(0, 9):
+       for j in xrange(0, 9):
+           canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill="yellow")
  
 def register_window():
     canvas.bind('<Button-1>', my_on_click)
@@ -44,10 +44,10 @@ def my_on_click(event):
  
  
 def refresh():
- for i in xrange(0,9):
-    for j in xrange(0,9):
-       x = i
-       y = j
+    for i in xrange(0,9):
+      for j in xrange(0,9):
+        x = i
+        y = j
          if tablica[x, y] is 1:
              color = "red"
          elif tablica[x, y] is -1:
