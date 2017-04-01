@@ -44,6 +44,7 @@ def my_on_click(event):
  
  
 def refresh():
+ for i in xrange(0,9):
     for j in xrange(0,9):
        x = i
        y = j
