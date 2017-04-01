@@ -25,7 +25,7 @@ def init_tablica():
             canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill="yellow")
  
 def register_window():
-    canvas.bind('<Double-1>', my_on_click)
+    canvas.bind('<Button-1>', my_on_click)
  
     button_start = Button(window, text="START", command=start)
     button_start.configure(width=10, activebackground="red", relief=FLAT)
