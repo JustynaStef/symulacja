@@ -48,9 +48,9 @@ def refresh():
         for j in xrange(0,9):
             x = i
             y = j
-            if tablica[x, y] is 1:
+            if tablica[x, y] == 1:
                 color = "red"
-            elif tablica[x, y] is -1:
+            elif tablica[x, y] == -1:
                 color = "blue"
             else:
                 color = "white"
