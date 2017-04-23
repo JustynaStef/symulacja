@@ -58,37 +58,43 @@ def refresh():
             canvas.create_rectangle(x*scale, y*scale, (x+1)*scale, (y+1)*scale, fill=color)
  
 def start():
-    for i in xrange(0, 9):
-        for j in xrange(0, 9):
-            x = i * scale
-            y = j * scale
+    num = 0
+    while True:
+        num = num + 1
+        if num == 200:
+            break
 
-            if 0 < y < (n - 1) * scale and 0 < x < (n - 1) * scale:
-                algorytm(tablica[i - 1, j], tablica[i + 1, j], tablica[i, j - 1], tablica[i, j + 1], i, j)
+        i = random.randint(0, 9)
+        j = random.randint(0, 9)
+        x = i * scale
+        y = j * scale
 
-            elif x == 0 and y == 0:
-                algorytm(tablica[i, j + 1], tablica[i + 1, j], 0, 0, i, j)
+        if 0 < y < (n - 1) * scale and 0 < x < (n - 1) * scale:
+            algorytm(tablica[i - 1, j], tablica[i + 1, j], tablica[i, j - 1], tablica[i, j + 1], i, j)
 
-            elif x == (n - 1) * scale and y == 0:
-                algorytm(tablica[i, j + 1], tablica[i - 1, j], 0, 0, i, j)
+        elif x == 0 and y == 0:
+            algorytm(tablica[i, j + 1], tablica[i + 1, j], 0, 0, i, j)
 
-            elif x == 0 and y == (n - 1) * scale:
-                algorytm(tablica[i, j - 1], tablica[i + 1, j], 0, 0, i, j)
+        elif x == (n - 1) * scale and y == 0:
+            algorytm(tablica[i, j + 1], tablica[i - 1, j], 0, 0, i, j)
 
-            elif x == (n - 1) * scale and y == (n - 1) * scale:
-                algorytm(tablica[i, j - 1], tablica[i - 1, j], 0, 0, i, j)
+        elif x == 0 and y == (n - 1) * scale:
+            algorytm(tablica[i, j - 1], tablica[i + 1, j], 0, 0, i, j)
 
-            elif y == 0:
-                algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i - 1, j], 0, i, j)
+        elif x == (n - 1) * scale and y == (n - 1) * scale:
+            algorytm(tablica[i, j - 1], tablica[i - 1, j], 0, 0, i, j)
 
-            elif y == (n - 1) * scale:
-                algorytm(tablica[i, j - 1], tablica[x + 1, j], tablica[i - 1, j], 0, i, j)
+        elif y == 0:
+            algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i - 1, j], 0, i, j)
 
-            elif x == 0:
-                algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i, j - 1], 0, i, j)
+        elif y == (n - 1) * scale:
+            algorytm(tablica[i, j - 1], tablica[x + 1, j], tablica[i - 1, j], 0, i, j)
 
-            elif x == (n - 1) * scale:
-                algorytm(tablica[i, j + 1], tablica[i, j - 1], tablica[i - 1, j], 0, i, j)
+        elif x == 0:
+            algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i, j - 1], 0, i, j)
+
+        elif x == (n - 1) * scale:
+            algorytm(tablica[i, j + 1], tablica[i, j - 1], tablica[i - 1, j], 0, i, j)
 
 def algorytm (one, two, three, four, x, y):
     h = one + two + three + four
