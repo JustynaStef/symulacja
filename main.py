@@ -4,6 +4,7 @@ from Tkinter import *
 import numpy as np
 import math
 import random
+import time
 
 n = 10
 tablica = np.arange(n*n)
@@ -56,6 +57,7 @@ def refresh():
                 color = "white"
            
             canvas.create_rectangle(x*scale, y*scale, (x+1)*scale, (y+1)*scale, fill=color)
+            time.sleep(0.01)
  
 def start():
     num = 0
@@ -88,7 +90,7 @@ def start():
             algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i - 1, j], 0, i, j)
 
         elif y == (n - 1) * scale:
-            algorytm(tablica[i, j - 1], tablica[x + 1, j], tablica[i - 1, j], 0, i, j)
+            algorytm(tablica[i, j - 1], tablica[i + 1, j], tablica[i - 1, j], 0, i, j)
 
         elif x == 0:
             algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i, j - 1], 0, i, j)
