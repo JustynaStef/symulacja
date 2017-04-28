@@ -6,14 +6,14 @@ import math
 import random
 import time
 
-n = 10
+n = 50
 tablica = np.arange(n*n)
 tablica = tablica.reshape((n,n))
 tablica = np.ones_like(tablica)
 scale = 10
 
 window = Tk()
-canvas = Canvas(window, width=100, height=120)
+canvas = Canvas(window, width=10*n, height=10*n + 40)
 canvas.pack()
  
 def main():
@@ -21,8 +21,8 @@ def main():
     register_window()
  
 def init_tablica():
-    for i in xrange(0, 9):
-        for j in xrange(0, 9):
+    for i in xrange(0, n - 1):
+        for j in xrange(0, n - 1):
             canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill="yellow")
  
 def register_window():
@@ -31,7 +31,7 @@ def register_window():
     button_start = Button(window, text="START", command=start)
     button_start.configure(width=10, activebackground="red", relief=FLAT)
     button_start.window = canvas.create_window(10, 10, anchor=S, window=button_start)
-    button_start.place(x=50, y=110)
+    button_start.place(x=5*n, y=10*n + 20)
     
     window.mainloop()
  
@@ -45,8 +45,8 @@ def my_on_click(event):
  
  
 def refresh():
-    for i in xrange(0,9):
-        for j in xrange(0,9):
+    for i in xrange(0, n-1):
+        for j in xrange(0, n-1):
             x = i
             y = j
             if tablica[x, y] == 1:
@@ -58,16 +58,28 @@ def refresh():
            
             canvas.create_rectangle(x*scale, y*scale, (x+1)*scale, (y+1)*scale, fill=color)
             time.sleep(0.01)
+            window.update_idletasks()
+            window.update()
+            
+def refresh2(x, y):
+    if tablica[x, y] == 1:
+        color = "red"
+    elif tablica[x, y] == -1:
+        color = "blue"
+    else:
+        color = "white"
+
+    canvas.create_rectangle(x * scale, y * scale, (x - 1) * scale, (y - 1) * scale, fill=color)
+    #time.sleep(0.01)
+    window.update_idletasks()
+    window.update()
  
 def start():
     num = 0
     while True:
-        num = num + 1
-        if num == 200:
-            break
 
-        i = random.randint(0, 9)
-        j = random.randint(0, 9)
+        i = random.randint(0, n - 1)
+        j = random.randint(0, n -1)
         x = i * scale
         y = j * scale
 
@@ -99,7 +111,7 @@ def start():
             algorytm(tablica[i, j + 1], tablica[i, j - 1], tablica[i - 1, j], 0, i, j)
 
 def algorytm (one, two, three, four, x, y):
-    h = one + two + three + four
+    h = -(one + two + three + four)
     b = 0.5
     p = math.exp(b * h)
     r = random.uniform(0, 1)
@@ -109,7 +121,8 @@ def algorytm (one, two, three, four, x, y):
     else:
         tablica[x, y] = -1
 
-    refresh()
+    #refresh()
+    refresh2(x, y)
         
  
 if __name__ == '__main__':
