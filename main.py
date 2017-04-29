@@ -23,8 +23,16 @@ def main():
 def init_tablica():
 
     for i in xrange(0, n - 1):
-        for j in xrange(0, n - 1):  #jest wypelniona tab jedynkami wiec i tak czerwona
-            canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill="yellow")
+        for j in xrange(0, n - 1):
+            k = random.randrange(0, 2)
+            if k == 0:
+                col = "blue"
+                tablica[i, j] = -1
+            else:
+                col = "red"
+                tablica[i, j] = 1
+
+            canvas.create_rectangle(i * scale, j * scale, (i + 1) * scale, (j + 1) * scale, fill=col)
 
 
 def register_window():
@@ -78,17 +86,8 @@ def refresh2(x, y):
     window.update()
 
 def start():
-    #for punkt in tablica:
-        #xx, yy = np.where(tablica == punkt)
-        #x = xx * scale
-        #y = yy * scale
-    #for i in xrange(0, 9):
-        #for j in xrange(0, 9):
-    num = 0
+
     while True:
-        #num = num + 1
-        #if num == 200:
-        #    break
 
         i = random.randint(0, n - 1)
         j = random.randint(0, n - 1)
@@ -111,7 +110,7 @@ def start():
             algorytm(tablica[i, j - 1], tablica[i - 1, j], tablica[0, n-1], tablica[n-1, 0], i, j)
 
         elif y == 0:
-            algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i - 1, j], tablica[ i, n-1], i, j)
+            algorytm(tablica[i, j + 1], tablica[i + 1, j], tablica[i - 1, j], tablica[i, n-1], i, j)
 
         elif y == (n - 1) * scale:
             algorytm(tablica[i, j - 1], tablica[i + 1, j], tablica[i - 1, j], tablica[i, 0], i, j)
@@ -126,7 +125,7 @@ def start():
 
 def algorytm(one, two, three, four, x, y):
     h = -(one + two + three + four)
-    b = 10
+    b = 1
     p = math.exp(b * h)
     r = random.uniform(0, 1)
 
