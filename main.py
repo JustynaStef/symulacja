@@ -2,6 +2,7 @@ from Tkinter import *
 import numpy as np
 import math
 import random
+import json
 import time
 
 n = 50
@@ -9,6 +10,10 @@ tablica = np.arange(n * n)
 tablica = tablica.reshape((n, n))
 tablica = np.ones_like(tablica)
 scale = 10
+
+wyniki = {}
+licznik = 0
+it = 0
 
 window = Tk()
 canvas = Canvas(window, width=10*n, height=10*n + 40)
@@ -128,15 +133,44 @@ def algorytm(one, two, three, four, x, y):
     b = 1
     p = math.exp(b * h)
     r = random.uniform(0, 1)
+    global it
 
     if r > p:
         tablica[x, y] = 1
     else:
         tablica[x, y] = -1
 
+    it += 1
+    if iter == n*n:
+        korel()
+
     refresh2(x, y)
     #refresh()
 
+def korel():
+    global it
+    global wyniki
+    global licznik
+    licznik += 1
+    M = 0
+    it = 0
+
+    for i in xrange(0, n - 1):
+        for j in xrange(0, n - 1):
+            M = M + tablica[i, j]
+
+    M = M/(n*n)
+
+    wyniki[licznik] = M
+
+    if licznik == 2:
+        zapisz()
+        licznik = 0
+        wyniki = {}
+
+def zapisz():
+    with open("wyniki.txt", 'a') as f:
+        f.write(json.dumps(wyniki))
 
 if __name__ == '__main__':
     main()
