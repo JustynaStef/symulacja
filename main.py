@@ -141,18 +141,17 @@ def algorytm(one, two, three, four, x, y):
         tablica[x, y] = -1
 
     it += 1
-    if iter == n*n:
+    if it == 10:
         korel()
 
     refresh2(x, y)
-    #refresh()
 
 def korel():
     global it
     global wyniki
     global licznik
     licznik += 1
-    M = 0
+    M = 0.0
     it = 0
 
     for i in xrange(0, n - 1):
