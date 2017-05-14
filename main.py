@@ -5,7 +5,7 @@ import random
 import json
 import time
 
-n = 50
+n = 20
 tablica = np.arange(n * n)
 tablica = tablica.reshape((n, n))
 tablica = np.ones_like(tablica)
@@ -129,19 +129,19 @@ def start():
 
 
 def algorytm(one, two, three, four, x, y):
-    h = -(one + two + three + four)
-    b = 1
-    p = math.exp(b * h)
+    h = 2*tablica[x, y]*(one + two + three + four)
+    b = 10
+    p = 1.0/(1.0 + math.exp(b * h))
     r = random.uniform(0, 1)
     global it
 
-    if r > p:
-        tablica[x, y] = 1
+    if r < p:
+        tablica[x, y] = tablica[x, y] *(-1)
     else:
-        tablica[x, y] = -1
+        tablica[x, y] = tablica[x, y]
 
     it += 1
-    if it == 10:
+    if it == n*n:
         korel()
 
     refresh2(x, y)
@@ -162,7 +162,7 @@ def korel():
 
     wyniki[licznik] = M
 
-    if licznik == 2:
+    if licznik == 10:
         zapisz()
         licznik = 0
         wyniki = {}
