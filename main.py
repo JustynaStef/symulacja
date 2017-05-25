@@ -174,7 +174,6 @@ def korel():
 def zapisz():
     with open("wyniki.csv", 'a') as f:
         f.write(str(wyniki[1]) + "/")
-        print "k"
         #f.write(str(wyniki[2]) + "/")
         #f.write(str(wyniki[3]) + "/")
         #f.write(str(wyniki[4]) + "/")
